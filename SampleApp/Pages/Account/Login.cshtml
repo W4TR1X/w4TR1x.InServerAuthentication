@@ -1,0 +1,26 @@
+﻿@page "/Account/Login"
+@model SampleApp.Pages.Account.LoginModel
+@{
+}
+
+<h3>Login Form</h3>
+<form method="post">
+    <table>
+        <tr>
+            <td><label asp-for="@Model.Username"></label></td>
+            <td><input type="text" asp-for="@Model.Username" value="@Model.Username" /></td>
+        </tr>
+        <tr>
+            <td><label asp-for="@Model.Password"></label></td>
+            <td><input type="text" asp-for="@Model.Password" value="@Model.Password" /></td> @*type="password"*@
+        </tr>
+        <tr>
+            <td><label asp-for="@Model.RememberMe"></label></td>
+            <td><input type="checkbox" asp-for="@Model.RememberMe" value="@Model.RememberMe" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="submit" value="Login" /></td>
+        </tr>
+    </table>
+</form>

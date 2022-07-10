@@ -1,0 +1,49 @@
+﻿@page "/Account/Manage/Index"
+@attribute [Authorize]
+@model SampleApp.Pages.Account.Manage.IndexModel
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+@if (Model.Token != null)
+{
+    <div>
+        <table class="table table-striped table-bordered table-hover ">
+            <tr>
+                <td>Token Identifier</td>
+                <td>@Model.Token.TokenIdentifier</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>@Model.Token.Username</td>
+            </tr>
+            <tr>
+                <td>Expires At (UTC)</td>
+                <td>@Model.Token.ExpireAt</td>
+            </tr>
+        </table>
+        <br />
+        Token Claims:<br />
+        <table class="table table-striped table-bordered table-hover ">
+            <tr>
+                <th>Claim Type</th>
+                <th>Claim Value</th>
+            </tr>
+            @foreach (var claim in Model.Token.TokenClaims)
+            {
+                <tr>
+                    <td>@claim.Type</td>
+                    <td>@claim.Value</td>
+                </tr>
+            }
+        </table>
+        <br />
+        Role Claims:<br />
+        <div class="d-flex flex-wrap">
+            @foreach (var role in Model.Token.RoleClaims)
+            {
+                <span class="badge rounded-pill bg-primary m-1 p-2">@role</span>
+            }
+        </div>
+    </div>
+}
